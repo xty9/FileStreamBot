@@ -1,6 +1,5 @@
 # This file is a part of TG-FileStreamBot
 
-
 import asyncio
 from WebStreamer.bot import StreamBot
 from WebStreamer.utils.file_properties import gen_link
@@ -47,6 +46,8 @@ async def channel_receive_handler(bot, broadcast: Message):
     if int(broadcast.chat.id) in Var.BANNED_CHANNELS:
         await bot.leave_chat(broadcast.chat.id)
         return
+    if int(broadcast.chat.id) == int(Var.BIN_CHANNEL):
+        return
     try:
         log_msg = await broadcast.forward(chat_id=Var.BIN_CHANNEL)
         reply_markup, Stream_Text, stream_link = await gen_link(m=broadcast, log_msg=log_msg, from_channel=True)
@@ -82,7 +83,7 @@ async def private_receive_handler(c: Client, m: Message):
 
         await m.reply_text(
             text=Stream_Text,
-            parse_mode="HTML",
+            parse_mode=ParseMode.HTML,
             disable_web_page_preview=True,
             reply_markup=reply_markup,
             quote=True
