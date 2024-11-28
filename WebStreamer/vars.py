@@ -8,13 +8,13 @@ load_dotenv()
 
 class Var(object):
     MULTI_CLIENT = False
-    API_ID = int(environ.get("API_ID"))
-    API_HASH = str(environ.get("API_HASH"))
-    BOT_TOKEN = str(environ.get("BOT_TOKEN"))
+    API_ID = int(environ.get("28645883"))
+    API_HASH = str(environ.get("e2d5ad008a5245627ac130ac63e2ecfd"))
+    BOT_TOKEN = str(environ.get("7192200134:AAEU7aW_SzubL_ZIVP6txlK59xwlj4tbtfM"))
     SLEEP_THRESHOLD = int(environ.get("SLEEP_THRESHOLD", "60"))  # 1 minte
     WORKERS = int(environ.get("WORKERS", "6"))  # 6 workers = 6 commands at once
     BIN_CHANNEL = int(
-        environ.get("BIN_CHANNEL", None)
+        environ.get("-1002267274906", None)
     )  # you NEED to use a CHANNEL when you're using MULTI_CLIENT
     PORT = int(environ.get("PORT", 8080))
     BIND_ADDRESS = str(environ.get("WEB_SERVER_BIND_ADDRESS", "0.0.0.0"))
@@ -29,7 +29,7 @@ class Var(object):
     else:
         ON_HEROKU = False
     FQDN = (
-        str(environ.get("FQDN", BIND_ADDRESS))
+        str(environ.get("150.136.63.174", BIND_ADDRESS))
         if not ON_HEROKU or environ.get("FQDN")
         else APP_NAME + ".herokuapp.com"
     )
